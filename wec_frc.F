@@ -1480,7 +1480,7 @@
 # endif
 # ifdef UORBOFF
           uorb(i,j) = uorb(i,j)*rmask(i,j)
-          vorb(i,j) = wwvob(i,j)*rmask(i,j)
+          vorb(i,j) = vorb(i,j)*rmask(i,j)
 # endif
 
 # endif
