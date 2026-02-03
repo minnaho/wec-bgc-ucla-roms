@@ -1701,7 +1701,7 @@
 ! re calculate sup with \hat{\eta}
           !if (kD(i,j).lt.6.and.supm.ne.0.) then
           ! MH edit
-          if (kD(i,j).lt.6.and.supm.ne.0.0 .and.sup(i,j)*supm .gt. 0.0) then
+          if (kD(i,j).lt.2*pi.and.supm.ne.0.0 .and. sup(i,j)*supm .gt. 0.0) then
           Fsup=min(1.,sqrt(sup(i,j)/supm))
           else
           Fsup=1.
