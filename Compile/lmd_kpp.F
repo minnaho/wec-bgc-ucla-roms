@@ -20,6 +20,9 @@
       use scalars
 #ifdef WEC
       use wec_frc, only: Akb, Akw
+# ifdef BBL_S95
+      use coupling, only: r_D
+# endif
 #endif
       implicit none
       integer istr,iend,jstr,jend, i,j,k
@@ -265,7 +268,7 @@ c--         Vtsq=Vtc*ws*sqrt(max(0., 0.5*(bvf(i,j,k)+bvf(i,j,k-1)) ))
             Cr(i,k)=FC(i,k)-FC(i,0)
 #ifdef WEC
             !D. Hypolite addition for bottom streaming
-     &     + C_Ek*f(i,j)*f(i,j)*abs(z_w(i,j,k))/abs(h(i,j)+1.0)
+     &     + C_Ek*f(i,j)*f(i,j)*abs(z_w(i,j,k))/max(h(i,j)-1.0, 0.1)
 #endif
             if (kbbl(i) == 0 .and. Cr(i,k) > 0.) kbbl(i)=k
           enddo
@@ -451,14 +454,24 @@ c--         Vtsq=Vtc*ws*sqrt(max(0., 0.5*(bvf(i,j,k)+bvf(i,j,k-1)) ))
 
 
         do i=istr,iend
-          ! wmb = vonKar*ustar_bottom (rd*u)
-          wmb=vonKar*vonKar*sqrt( 0.333333333333*(
+          ! wmb = vonKar*ustar_bottom
+          ! Bottom current velocity magnitude
+          cff=sqrt( 0.333333333333*(
      &               u(i,j,1,nstp)**2 +u(i+1,j,1,nstp)**2
      &                      +u(i,j,1,nstp)*u(i+1,j,1,nstp)
      &              +v(i,j,1,nstp)**2 +v(i,j+1,1,nstp)**2
-     &                      +v(i,j,1,nstp)*v(i,j+1,1,nstp)
-     &                                               ) )
-     &                  / log(1.+0.5*Hz(i,j,1)/Zob)
+     &                      +v(i,j,1,nstp)*v(i,j+1,1,nstp) ) )
+
+#if defined WEC && defined BBL_S95
+          ! Wave-enhanced BBL mixing: wmb = vonKar * sqrt(r_D * |U|)
+          ! r_D includes Soulsby 1995 wave-current enhancement when
+          ! WEC + BBL_S95 are enabled (computed in compute_rd_bott_drag.h)
+          ! This ensures consistency between momentum drag and BBL mixing.
+          wmb = vonKar * sqrt( r_D(i,j) * cff )
+#else
+          ! Standard (current-only) friction velocity scale
+          wmb = vonKar*vonKar*cff / log(1.+0.5*Hz(i,j,1)/Zob)
+#endif
 
           wsb=wmb
 

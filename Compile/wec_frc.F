@@ -64,17 +64,11 @@
 ! wdrx | MRL     | cosine of wave direction [non dimension]
 ! wdre | MRL     | sine of   wave direction [non dimension]
 ! whrm | MRL     | (RMS) wave height (twice the wave amplitude) [m]
-! wdsp | MRL     | breaking dissipation rate (\epsilon_b term) [m3/s3]
-! wdrg | MRL     | frictional dissipation rate (\epsilon_d term) [m3/s3]
 ! rdsp | ROLLER  | roller dissipation rate (\epsilon_r term) [m3/s3]
-! wbst | MRL/BKPP| frictional dissipation stress (e_d k/sigma) [m2/s2]
 !--------------------------------------------------------------------
 
       real,allocatable,dimension(:,:) :: wfrq
       real,allocatable,dimension(:,:) :: whrm
-      real,allocatable,dimension(:,:) :: wdsp
-      real,allocatable,dimension(:,:) :: wdrg
-      real,allocatable,dimension(:,:) :: wbst
 # ifdef UORBOFF
       real,allocatable,dimension(:,:) :: uorb
       real,allocatable,dimension(:,:) :: vorb
@@ -767,12 +761,6 @@
 #endif
       allocate( whrm(GLOBAL_2D_ARRAY) )
       whrm=0.
-      allocate( wdsp(GLOBAL_2D_ARRAY) )
-      wdsp=0.
-      allocate( wdrg(GLOBAL_2D_ARRAY) )
-      wdrg=0.
-      allocate( wbst(GLOBAL_2D_ARRAY) )
-      wbst=0.
       allocate( wdrx(GLOBAL_2D_ARRAY) )
       wdrx=0.
       allocate( wdre(GLOBAL_2D_ARRAY) )
@@ -1154,7 +1142,7 @@
 # include "compute_auxiliary_bounds.h"
       
 
-      !print *, 'IN compute_wec_rhs_uv_terms'
+!      print *, 'IN compute_wec_rhs_uv_terms'
 ! ------------------------------------------------------------------------
 !      Add horizontal vortex-force and advection terms & breaking terms
 ! ------------------------------------------------------------------------
@@ -1664,7 +1652,6 @@
       do j=jstr-1,jend+1
         do i=istr-1,iend+1
           brk(i,j)=0.D0
-          frc(i,j)=0.D0
         enddo
       enddo
 # endif
@@ -1699,9 +1686,7 @@
           supm=-0.125*(wh(i,j)**2)*kw(i,j)
      &              /max(sinh(2.*min(kw(i,j)*h(i,j),khmax)),eps)
 ! re calculate sup with \hat{\eta}
-          !if (kD(i,j).lt.6.and.supm.ne.0.) then
-          ! MH edit
-          if (kD(i,j).lt.2*pi.and.supm.ne.0.0 .and. sup(i,j)*supm .gt. 0.0) then
+          if (kD(i,j).lt.2*pi .and.supm.ne.0..and. sup(i,j)*supm .gt. 0.0) then
           Fsup=min(1.,sqrt(sup(i,j)/supm))
           else
           Fsup=1.
@@ -1711,24 +1696,6 @@
       enddo
 # endif
 !
-! Dissipation terms : copy into shared arrays
-! ===========================================
-!
-      do j=0,ny+1
-         do i=0,nx+1
-      !do j=jstrR,jendR
-      !  do i=istrR,iendR
-          wdsp(i,j)=ebrk(i,j)         ! epsilon_b (m3/s3)
-          cff = wramp2*wved(i,j)*inv_f(i,j)
-          wdrg(i,j)=cff*fr(i,j)       ! epsilon_d (m3/s3)
-          wbst(i,j)=cff*kw(i,j)       ! e_d stress (m2/s2) for KPP
-# ifdef MASKING
-          wdsp(i,j)=wdsp(i,j)*rmask(i,j)
-          wbst(i,j)=wbst(i,j)*rmask(i,j)
-          wdrg(i,j)=wdrg(i,j)*rmask(i,j)
-# endif
-        enddo
-      enddo
 !
 ! 2DH depth-averaged Stokes drift and breaking acceleration
 ! =========================================================
@@ -2108,10 +2075,9 @@
             cff1 = cff2*( exp( keffkw*(z_w(i,j,k)+h(i,j)-Dstp(i,j)))
      &                   -exp(-keffkw*(z_w(i,j,k)+h(i,j)+Dstp(i,j))) )
             cff3 = cff1**2
-            Akw(i,j,k) = max(0.,(cff3-E_pre(i,j,k))/dt)
-#  ifdef MASKING
-     &                               *rmask(i,j)
-#  endif
+            ! Akw disabled - represents kinematic spreading, not physical mixing
+            ! See Uchiyama 2010 Eq. 6 discussion
+            Akw(i,j,k) = 0.0
             E_pre(i,j,k) = cff3    ! store this for the next time step.
           enddo
          !if (mynode==0 .and. j==1 .and. i==1) then
@@ -2292,7 +2258,7 @@
 
 #ifdef EXCHANGE
       ! MPI EXCHANGES
-      call exchange_xxx(sup,wdsp,wdrg,wbst)
+      call exchange_xxx(sup)
       call exchange_xxx(ust2d,brk2dx,frc2dx)
       call exchange_xxx(vst2d,brk2de,frc2de)
 #ifdef BBL_S95
@@ -2315,7 +2281,7 @@
 
 
 !# ifdef EXCHANGE
-!      call exchange2d_4_tile(istr,iend,jstr,jend, sup,wdsp,wdrg,wbst)
+!      call exchange2d_tile(istr,iend,jstr,jend, sup)
 !      call exchange2d_3_tile(istr,iend,jstr,jend, ust2d,brk2dx,frc2dx)
 !      call exchange2d_3_tile(istr,iend,jstr,jend, vst2d,brk2de,frc2de)
 !#  if defined BBL_S95

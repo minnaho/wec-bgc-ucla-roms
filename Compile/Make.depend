@@ -60,7 +60,7 @@ t3dbc_im.o : t3dbc_im.F compute_auxiliary_bounds.h set_global_definitions.h cppd
 rho_eos.o : rho_eos.F compute_extended_bounds.h compute_tile_bounds.h set_global_definitions.h cppdefs.opt scalars.o ocean_vars.o mixing.o grid.o eos_vars.o coupling.o tracers.o private_scratch.o hidden_mpi_vars.o param.o 
 alfabeta.o : alfabeta.F set_global_definitions.h cppdefs.opt scalars.o ocean_vars.o grid.o eos_vars.o tracers.o param.o 
 lmd_vmix.o : lmd_vmix.F compute_tile_bounds.h set_global_definitions.h cppdefs.opt scalars.o ocean_vars.o mixing.o grid.o tracers.o private_scratch.o hidden_mpi_vars.o param.o 
-lmd_kpp.o : lmd_kpp.F lmd_wscale_wm_and_ws.h lmd_kpp_smooth_hbl.h lmd_wscale_ws_only.h set_global_definitions.h cppdefs.opt strings.o wec_frc.o scalars.o ocean_vars.o mixing.o grid.o surf_flux.o param.o 
+lmd_kpp.o : lmd_kpp.F lmd_wscale_wm_and_ws.h lmd_kpp_smooth_hbl.h lmd_wscale_ws_only.h set_global_definitions.h cppdefs.opt strings.o coupling.o wec_frc.o scalars.o ocean_vars.o mixing.o grid.o surf_flux.o param.o 
 lmd_swr_frac.o : lmd_swr_frac.F compute_tile_bounds.h set_global_definitions.h cppdefs.opt mpi_exchanges.o ocean_vars.o mixing.o private_scratch.o hidden_mpi_vars.o param.o 
 diag.o : diag.F diag.opt compute_tile_bounds.h set_global_definitions.h cppdefs.opt ocean_vars.o grid.o eos_vars.o diag_vars.o comm_vars.o scalars.o private_scratch.o hidden_mpi_vars.o param.o 
 timers.o : timers.F set_global_definitions.h cppdefs.opt scalars.o comm_vars.o param.o 
