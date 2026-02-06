@@ -68,6 +68,20 @@
  
 !   add here passive tracers 
 
+      itot=itot+1;                   wrt_t_avg(itot)=.True.
+      wrt_t  (itot)=.True.;          t_units  (itot)='mmol m-3'
+      t_vname(itot)='rtrace';        t_ana_frc(itot)=1
+      t_tname(itot)=''   
+      t_lname(itot)='River tracer'
+      wrt_t_dia(itot)=.True.
+
+      itot=itot+1;                   wrt_t_avg(itot)=.True.
+      wrt_t  (itot)=.True.;          t_units  (itot)='mmol m-3'
+      t_vname(itot)='ptrace';        t_ana_frc(itot)=1
+      t_tname(itot)=''   
+      t_lname(itot)='Pipe tracer'
+      wrt_t_dia(itot)=.True.
+
 ! - BGC TRACERS:
 
 ! -- default bgc tracers
