@@ -69,7 +69,7 @@
      &    PHLO          ! lower bound for ph in solver
      &   ,PHHI          ! upper bound for ph in solver
        real, PARAMETER :: 
-     &    phlo_init = 7.0,  ! low bound for ph for no prev soln
+     &    phlo_init = 5.0,  ! low bound for ph for no prev soln
      &    phhi_init = 9.0,  ! high bound for ph for no prev soln
      &    del_ph = 0.70     ! delta-ph for prev soln (ref value = 0.2)
 

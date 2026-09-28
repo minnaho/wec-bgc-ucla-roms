@@ -17,7 +17,7 @@
       integer,parameter :: nrpf_his_dia          = 12             ! total recs per file
 
       logical,parameter :: wrt_avg_dia           = .true.         ! t/f to write module history file
-      real,parameter    :: output_period_avg_dia = 24*60*60    ! output period in seconds
+      real,parameter    :: output_period_avg_dia = 12*60*60    ! output period in seconds
       integer,parameter :: nrpf_avg_dia          = 1              ! total recs per file
 
       integer, parameter :: nbgc_flx = 2                   ! number of surface bgc flux forcings

@@ -217,63 +217,63 @@
       vname_bec2_diag_3d(2,spnlim_idx_t)='N limitation factor of small phytoplankton'
       vname_bec2_diag_3d(3,spnlim_idx_t)=' '
       vname_bec2_diag_3d(4,spnlim_idx_t)=' '
-      wrt_bec2_diag_3d(spnlim_idx_t)=.false.
+      wrt_bec2_diag_3d(spnlim_idx_t)=.true.
 
       spfeuptake_idx_t=31
       vname_bec2_diag_3d(1,spfeuptake_idx_t)='SP_FE_LIM'
       vname_bec2_diag_3d(2,spfeuptake_idx_t)='Fe limitation factor of small phytoplankton'
       vname_bec2_diag_3d(3,spfeuptake_idx_t)=' '
       vname_bec2_diag_3d(4,spfeuptake_idx_t)=' '
-      wrt_bec2_diag_3d(spfeuptake_idx_t)=.false.
+      wrt_bec2_diag_3d(spfeuptake_idx_t)=.true.
 
       sppo4uptake_idx_t=32
       vname_bec2_diag_3d(1,sppo4uptake_idx_t)='SP_PO4_LIM'
       vname_bec2_diag_3d(2,sppo4uptake_idx_t)='PO4 limitation factor of small phytoplankton'
       vname_bec2_diag_3d(3,sppo4uptake_idx_t)=' '
       vname_bec2_diag_3d(4,sppo4uptake_idx_t)=' '
-      wrt_bec2_diag_3d(sppo4uptake_idx_t)=.false.
+      wrt_bec2_diag_3d(sppo4uptake_idx_t)=.true.
 
       splightlim_idx_t=33
       vname_bec2_diag_3d(1,splightlim_idx_t)='SP_LIGHT_LIM'
       vname_bec2_diag_3d(2,splightlim_idx_t)='Small phytoplankton light limitation factor'
       vname_bec2_diag_3d(3,splightlim_idx_t)=' '
       vname_bec2_diag_3d(4,splightlim_idx_t)=' '
-      wrt_bec2_diag_3d(splightlim_idx_t)=.false.
+      wrt_bec2_diag_3d(splightlim_idx_t)=.true.
 
       diatnlim_idx_t=34
       vname_bec2_diag_3d(1,diatnlim_idx_t)='DIAT_N_LIM'
       vname_bec2_diag_3d(2,diatnlim_idx_t)='N limitation factor of diatoms'
       vname_bec2_diag_3d(3,diatnlim_idx_t)=' '
       vname_bec2_diag_3d(4,diatnlim_idx_t)=' '
-      wrt_bec2_diag_3d(diatnlim_idx_t)=.false.
+      wrt_bec2_diag_3d(diatnlim_idx_t)=.true.
 
       diatfeuptake_idx_t=35
       vname_bec2_diag_3d(1,diatfeuptake_idx_t)='DIAT_FE_LIM'
       vname_bec2_diag_3d(2,diatfeuptake_idx_t)='Fe limitation factor of diatoms'
       vname_bec2_diag_3d(3,diatfeuptake_idx_t)=' '
       vname_bec2_diag_3d(4,diatfeuptake_idx_t)=' '
-      wrt_bec2_diag_3d(diatfeuptake_idx_t)=.false.
+      wrt_bec2_diag_3d(diatfeuptake_idx_t)=.true.
 
       diatpo4uptake_idx_t=36
       vname_bec2_diag_3d(1,diatpo4uptake_idx_t)='DIAT_PO4_LIM'
       vname_bec2_diag_3d(2,diatpo4uptake_idx_t)='PO4 limitation factor of diatoms'
       vname_bec2_diag_3d(3,diatpo4uptake_idx_t)=' '
       vname_bec2_diag_3d(4,diatpo4uptake_idx_t)=' '
-      wrt_bec2_diag_3d(diatpo4uptake_idx_t)=.false.
+      wrt_bec2_diag_3d(diatpo4uptake_idx_t)=.true.
 
       diatsio3uptake_idx_t=37
       vname_bec2_diag_3d(1,diatsio3uptake_idx_t)='DIAT_SIO3_LIM'
       vname_bec2_diag_3d(2,diatsio3uptake_idx_t)='SiO3 limitation factor of diatoms'
       vname_bec2_diag_3d(3,diatsio3uptake_idx_t)=' '
       vname_bec2_diag_3d(4,diatsio3uptake_idx_t)=' '
-      wrt_bec2_diag_3d(diatsio3uptake_idx_t)=.false.
+      wrt_bec2_diag_3d(diatsio3uptake_idx_t)=.true.
 
       diatlightlim_idx_t=38
       vname_bec2_diag_3d(1,diatlightlim_idx_t)='DIAT_LIGHT_LIM'
       vname_bec2_diag_3d(2,diatlightlim_idx_t)='Diatom light limitation factor'
       vname_bec2_diag_3d(3,diatlightlim_idx_t)=' '
       vname_bec2_diag_3d(4,diatlightlim_idx_t)=' '
-      wrt_bec2_diag_3d(diatlightlim_idx_t)=.false.
+      wrt_bec2_diag_3d(diatlightlim_idx_t)=.true.
 
       caco3prod_idx_t=39
       vname_bec2_diag_3d(1,caco3prod_idx_t)='CACO3_PROD'
@@ -308,21 +308,21 @@
       vname_bec2_diag_3d(2,diazpo4uptake_idx_t)='PO4 limitation factor of diazotrophs'
       vname_bec2_diag_3d(3,diazpo4uptake_idx_t)=' '
       vname_bec2_diag_3d(4,diazpo4uptake_idx_t)=' '
-      wrt_bec2_diag_3d(diazpo4uptake_idx_t)=.false.
+      wrt_bec2_diag_3d(diazpo4uptake_idx_t)=.true.
 
       diazfeuptake_idx_t=44
       vname_bec2_diag_3d(1,diazfeuptake_idx_t)='DIAZ_FE_LIM'
       vname_bec2_diag_3d(2,diazfeuptake_idx_t)='Fe limitation factor of diazotrophs'
       vname_bec2_diag_3d(3,diazfeuptake_idx_t)=' '
       vname_bec2_diag_3d(4,diazfeuptake_idx_t)=' '
-      wrt_bec2_diag_3d(diazfeuptake_idx_t)=.false.
+      wrt_bec2_diag_3d(diazfeuptake_idx_t)=.true.
 
       diazlightlim_idx_t=45
       vname_bec2_diag_3d(1,diazlightlim_idx_t)='DIAZ_LIGHT_LIM'
       vname_bec2_diag_3d(2,diazlightlim_idx_t)='Diazotroph light limitation'
       vname_bec2_diag_3d(3,diazlightlim_idx_t)=' '
       vname_bec2_diag_3d(4,diazlightlim_idx_t)=' '
-      wrt_bec2_diag_3d(diazlightlim_idx_t)=.false.
+      wrt_bec2_diag_3d(diazlightlim_idx_t)=.true.
 
       fescavengerate_idx_t=46
       vname_bec2_diag_3d(1,fescavengerate_idx_t)='FE_SCAVENGE_RATE'
@@ -623,21 +623,21 @@
       vname_bec2_diag_3d(2,spplim_idx_t)='Small phytoplankton P limitation (PO4 + DOP)'
       vname_bec2_diag_3d(3,spplim_idx_t)=' '
       vname_bec2_diag_3d(4,spplim_idx_t)=' '
-      wrt_bec2_diag_3d(spplim_idx_t)=.false.
+      wrt_bec2_diag_3d(spplim_idx_t)=.true.
 
       diatplim_idx_t=89
       vname_bec2_diag_3d(1,diatplim_idx_t)='DIAT_P_LIM'
       vname_bec2_diag_3d(2,diatplim_idx_t)='Diatom P limitation (PO4 + DOP)'
       vname_bec2_diag_3d(3,diatplim_idx_t)=' '
       vname_bec2_diag_3d(4,diatplim_idx_t)=' '
-      wrt_bec2_diag_3d(diatplim_idx_t)=.false.
+      wrt_bec2_diag_3d(diatplim_idx_t)=.true.
 
       diazplim_idx_t=90
       vname_bec2_diag_3d(1,diazplim_idx_t)='DIAZ_P_LIM'
       vname_bec2_diag_3d(2,diazplim_idx_t)='Diazotroph P limitation (PO4 + DOP)'
       vname_bec2_diag_3d(3,diazplim_idx_t)=' '
       vname_bec2_diag_3d(4,diazplim_idx_t)=' '
-      wrt_bec2_diag_3d(diazplim_idx_t)=.false.
+      wrt_bec2_diag_3d(diazplim_idx_t)=.true.
 
       totphytoc_idx_t=91
       vname_bec2_diag_3d(1,totphytoc_idx_t)='TOT_PHYTOC'

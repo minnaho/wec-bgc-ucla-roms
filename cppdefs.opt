@@ -15,8 +15,8 @@
 #    define WAVE_OFFLINE
 
 #    define SURFACE_BREAK
-#    undef Akb_U2010
-#    define FKV_FUNC4
+#    undef Akb_U2010  ! lower breaking dissipation 
+#    define FKV_FUNC4 ! potentially too much momentum
 #    define WAVE_FRICTION
 #    define BBL_S95
 #    define UORBOFF
@@ -84,7 +84,8 @@ c#define EXACT_RESTART
 /* Open Boundary Conditions */
 #define OBC_M2FLATHER  /* Barotop. BC: OBC_M2FLATHER, OBC_M2ORLANSKI, OBC_M2SPECIFIED */
 #define OBC_M3ORLANSKI /* Baroclin. BC: OBC_M3ORLANSKI, OBC_M3SPECIFIED */
-#define OBC_TORLANSKI  /* Tracer BC: OBC_TORLANSKI, OBC_TSPECIFIED */
+#define OBC_TSPECIFIED  /* Tracer BC: OBC_TORLANSKI, OBC_TSPECIFIED */
+c#define OBC_TORLANSKI  /* Tracer BC: OBC_TORLANSKI, OBC_TSPECIFIED */
 
 
 /* Open Boundaries */
