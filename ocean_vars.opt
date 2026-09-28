@@ -9,18 +9,18 @@
       real,parameter    :: output_period_his = 3600         ! output period in seconds
       integer,parameter :: nrpf_his          = 12          ! total recs per file      
       logical,parameter :: wrt_Z =.true.,
-     &                     wrt_Ub=.true.,
-     &                     wrt_Vb=.true.,
+     &                     wrt_Ub=.false.,
+     &                     wrt_Vb=.false.,
      &                     wrt_U=.true.,
      &                     wrt_V=.true.,
      &                     wrt_R=.true.,
-     &                     wrt_O=.true.,
+     &                     wrt_O=.false.,
      &                     wrt_W=.true.,
-     &                     wrt_Akv=.true.,
+     &                     wrt_Akv=.false.,
      &                     wrt_Akt=.true.,
      &                     wrt_Aks=.false.,
-     &                     wrt_Hbls=.false.,
-     &                     wrt_Hbbl=.false.
+     &                     wrt_Hbls=.true.,
+     &                     wrt_Hbbl=.true.
       
       logical,parameter :: wrt_file_avg      = .false.     ! t/f to write module averages file
       real,parameter    :: output_period_avg = 3600         ! output averaging period in seconds
