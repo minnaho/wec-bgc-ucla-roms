@@ -16,7 +16,7 @@
      &                     wrt_R=.true.,
      &                     wrt_O=.false.,
      &                     wrt_W=.true.,
-     &                     wrt_Akv=.false.,
+     &                     wrt_Akv=.true.,
      &                     wrt_Akt=.true.,
      &                     wrt_Aks=.false.,
      &                     wrt_Hbls=.true.,
